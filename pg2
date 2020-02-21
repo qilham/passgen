@@ -1,0 +1,38 @@
+# -*- coding:utf -8 -*-
+#!/usr/bin/python3
+
+import random
+
+def get_available_characters() -> str:
+    """
+    Получить доступные для пароля символы
+    """
+    chars: str = '+-/*!&$#?=@<>abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+    return chars
+
+def generate_password(pass_len: int) -> str:
+    """
+    Сгенерирует пароль длинною pass_len
+    """
+    password: str = ''
+    for i in range(pass_len):
+        password += random.choice(get_available_characters())
+    return password
+
+def get_input() -> (int, int):
+    """
+    Захватит импут и вернет кол-во паролей, длинну пароля
+    """
+    number = int(input('количество паролей?'+ "\n"))
+    length = int(input('длина пароля?'+ "\n"))
+    return number, length
+
+def main(number: int, lenght: int):
+    for _ in range(number):
+        password: str = generate_password(lenght)
+        print(password)
+
+if __name__ == "__main__":
+    # Точка входа в программу, наравне с main
+    number, lenght = get_input()
+    main(number, lenght)
